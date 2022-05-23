@@ -1,0 +1,50 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search prime numbers"
+        [(ngModel)]="number"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="retrivePrimeNumbers()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" *ngIf="searchResult!= null &&  searchResult.downStreamPrimeNumbers!= null && searchResult.downStreamPrimeNumbers.length>0">
+    <h4> Down stream Prime Numbers List is :</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let prime of searchResult?.downStreamPrimeNumbers; let i = index"
+      >
+        {{ prime }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6" *ngIf=" searchResult!= null &&  searchResult.upStreamPrimeNumbers != null && searchResult.upStreamPrimeNumbers.length>0">
+    <h4> Up stream Prime Numbers List is :</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let prime of searchResult.upStreamPrimeNumbers; let i = index">
+        {{ prime }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h4> The sum of the founded prime numbers is : </h4>
+    {{searchResult?.sumValue}}
+  </div>
+  <div class="col-md-6">
+    <h4> The avergage of the founded prime numbers is : </h4>
+    {{searchResult?.averageValue}}
+  </div>
+</div>

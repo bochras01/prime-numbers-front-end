@@ -13,10 +13,10 @@
       </div>
     </div>
   </div>
-  <div class="col-md-6" *ngIf="searchResult!= null &&  searchResult.length>0 else noHistory">
+  <div *ngIf="searchResult!= null &&  searchResult.length>0">
 
-    <h4 *ngIf="searchResult!= null &&  searchResult.length<10"> Your last searchs are :  </h4>
-    <h4 *ngIf="searchResult!= null &&  searchResult.length===10"> Your last 10 searchs are :  </h4>
+    <h4 *ngIf="searchResult!= null &&  searchResult.length<10"> Your last searchs are : </h4>
+    <h4 *ngIf="searchResult!= null &&  searchResult.length===10"> Your last 10 searchs are : </h4>
     <ul class="list-group">
       <li
         class="list-group-item"
@@ -26,10 +26,6 @@
       </li>
     </ul>
   </div>
-
-  <ng-template #noHistory>
-    <div>Your search history is empty...</div>
-  </ng-template>
-
+  <div *ngIf="(searchResult== null ||  searchResult.length===0) && clicked">Your search history is empty...</div>
 </div>
 

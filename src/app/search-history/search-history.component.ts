@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SearchResult} from "../models/search-result.model";
 import {SearchService} from "../services/search.service";
 
@@ -9,8 +9,10 @@ import {SearchService} from "../services/search.service";
 })
 export class SearchHistoryComponent implements OnInit {
   searchResult?: SearchResult[];
+  clicked: boolean = false;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {
+  }
 
   ngOnInit(): void {
   }
@@ -20,7 +22,7 @@ export class SearchHistoryComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.searchResult = data;
-          console.log(data);
+          this.clicked = true;
         },
         error: (e) => console.error(e)
       });
